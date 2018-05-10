@@ -1,0 +1,53 @@
+#timeChicago {
+
+	font: 30px;
+	color: brown;
+}
+
+.jumbotron {
+	
+	background-image: url("../images/CTAschedule.jpg");
+	background-size: cover;
+}
+
+#PDF {
+
+	position: absolute;
+	top: 300px;
+	width: 700px;
+	height: 50px;
+	background: white;
+	color: black;
+}
+
+.line1 {
+
+width: 150px;
+height:50px;
+background: pink;
+color: black;
+}
+
+.line2 {
+
+width: 150px;
+height:50px;
+background: green;
+color: black;
+}
+
+.line3 {
+
+width: 150px;
+height:50px;
+background: brown;
+color: black;
+}
+
+.line4 {
+
+width: 150px;
+height:50px;
+background: orange;
+color: black;
+}

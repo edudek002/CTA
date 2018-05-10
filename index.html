@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TrainScheduler</title>
+
+    <!--<link rel="stylesheet" type="text/css" href="reset/css/style.css">-->
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+   
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- JUMBOTRON-->
+
+      <div class="jumbotron text-center">
+        
+      
+        <h1 class="display4">Chicago Transit Authority</h1>
+        <p class="lead"><h3>CTA Station - Randolph/Wabash Timetable</h3></p>
+        <strong><p class="lead" id="timeChicago" style="color: red; font-size: 28px"></p></strong>
+      </div>
+
+      <!-- BUTTONS WITH LINKS TO CTA WEBSITE-->
+
+      <div class="row">
+        <button><h5><a id="pinkLine" href="http://www.transitchicago.com/assets/1/pinkline_schedules/randolph.pdf">
+          </a></h5></button>
+        <button><h5><a id="greenLine" href="http://www.transitchicago.com/assets/1/greenline_schedules/randolph.pdf"></a></h5></button>
+        <button><h5><a id="brownLine" href="http://www.transitchicago.com/assets/1/brownline_schedules/randolph.pdf"></a></h5></button>
+        <button><h5><a id="orangeLine" href="http://www.transitchicago.com/assets/1/orangeline_schedules/randolph.pdf"></a></h5></button>
+      </div>
+
+      <div class="row"> 
+
+        <div class="col-lg-12">
+
+        <!-- Current Trains-->
+          <div class="card-primary">
+            <div class="card-heading">
+              <br>
+              <br>
+              <h3 class="card-title"><strong>Current Train Schedule</strong></h3>
+            </div>
+            <div class="card-body">
+
+              <!-- TABLE-->
+              <table class="table table-hover" id='train-table'>
+                <thead>
+                  <tr>
+                    <th>Train Name<div id ="TrainName"></div></th>
+                    <th>Destination<div id="Destination"></div></th>
+                    <th>Frequency (min)<div id="Frequency"></div></th>
+                    <th>Next Arrival<div id="NextArrival"></div></th>
+                    <th>Minutes Away<div id="MinutesAway"></div></th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card card-body"> 
+
+            <div class="card-body-heading">
+                  <h3 class="card-title">Add Train</h3>
+            </div>
+
+            <div class="card-body">
+
+              <!-- FORM-->
+
+              <form role="form">
+                <div class="form-group">
+                  <label for="name-input">Train Name</label>
+                  <input class="form-control" id="name-input" type="text">
+                </div>
+
+                <div class="form-group">
+                  <label for="destination-input">Destination</label>
+                  <input class="form-control" id="destination-input" type="text">
+                </div>
+
+                <div class="form-group">
+                  <label for="start1-input">First Train (HH:mm - military time)</label>
+                  <input class="form-control" id="start1-input" type="text">
+                </div>
+
+                <div class="form-group">
+                  <label for="frequency1-input">Frequency1 (min):</label>
+                  <input class="form-control" id="frequency1-input" type="text">  
+                </div>
+
+                <div class="form-group">
+                  <label for="start2-input">Morning Rush Hour Begins (HH:mm - military time)</label>
+                  <input class="form-control" id="start2-input" type="text">
+                </div>
+
+                <div class="form-group">
+                  <label for="frequency2-input">Frequency2 (min):</label>
+                  <input class="form-control" id="frequency2-input" type="text"> 
+                </div>
+
+                <div class="form-group">
+                  <label for="start3-input">Mid-day Schedule Begins (HH:mm - military time)</label>
+                  <input class="form-control" id="start3-input" type="text">
+                </div>
+
+                <div class="form-group">
+                  <label for="frequency3-input">Frequency3 (min):</label>
+                  <input class="form-control" id="frequency3-input" type="text">  
+                </div>
+
+                <div class="form-group">
+                  <label for="start4-input">Evening Rush Hour Begins (HH:mm - military time)</label>
+                  <input class="form-control" id="start4-input" type="text">
+                </div>
+
+                <div class="form-group">
+                  <label for="frequency4-input">Frequency4 (min):</label>
+                  <input class="form-control" id="frequency4-input" type="text">  
+                </div>
+
+                <div class="form-group">
+                  <label for="start5-input">Late Evening Schedule Begins (HH:mm - military time)</label>
+                  <input class="form-control" id="start5-input" type="text">
+                </div>
+
+                <div class="form-group">
+                  <label for="frequency5-input">Frequency5 (min):</label>
+                  <input class="form-control" id="frequency5-input" type="text">                  
+                </div>
+                
+                <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- JAVASCRIPT  -->
+  <!-- ================================================================================================== -->
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    
+  <script type="text/javascript" src="assets/javascript/a.js"></script>
+
+    
+    
+  </body>
+
+</html>
